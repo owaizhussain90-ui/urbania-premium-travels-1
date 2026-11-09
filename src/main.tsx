@@ -1,4 +1,4 @@
-import { StrictMode, lazy } from 'react';
+import { StrictMode, Suspense, lazy } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -38,7 +38,18 @@ createRoot(document.getElementById('root')!).render(
         <ToastProvider>
           <AuthProvider>
             <BookingProvider>
-              <Routes>
+                <Suspense fallback={
+                    <div style={{
+                          minHeight: '100vh',
+                                display: 'grid',
+                                      placeItems: 'center',
+                                            background: '#1A2E4A',
+                                                  color: '#ffffff'
+                                                      }}>
+                                                            Loading Urbania...
+                                                                </div>
+                                                                  }>
+                                                                      <Routes>
                 <Route path="/" element={<Navigate to="/splash" replace />} />
                 <Route path="/splash" element={<Splash />} />
                 <Route path="/onboarding" element={<Onboarding />} />
@@ -68,8 +79,9 @@ createRoot(document.getElementById('root')!).render(
                   <Route path="/admin/fares" element={<FareConfig />} />
                 </Route>
                 <Route path="*" element={<NotFound />} />
-              </Routes>
-            </BookingProvider>
+                    </Routes>
+                      </Suspense>
+                      </BookingProvider>
           </AuthProvider>
         </ToastProvider>
       </BrowserRouter>
