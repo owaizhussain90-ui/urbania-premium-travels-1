@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Urbania Premium Travels</string>
+    <string name="title_activity_main">Urbania Premium Travels</string>
+    <string name="package_name">com.urbania.premiumtravels</string>
+    <string name="custom_url_scheme">com.urbania.premiumtravels</string>
+</resources>
